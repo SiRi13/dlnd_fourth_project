@@ -38,14 +38,14 @@ def preprocess_and_save_data(source_path, target_path, text_to_ids):
     pickle.dump((
         (source_text, target_text),
         (source_vocab_to_int, target_vocab_to_int),
-        (source_int_to_vocab, target_int_to_vocab)), open('preprocess.p', 'wb'))
+        (source_int_to_vocab, target_int_to_vocab)), open(os.path.join('data','preprocess.p'), 'wb'))
 
 
 def load_preprocess():
     """
     Load the Preprocessed Training data and return them in batches of <batch_size> or less
     """
-    return pickle.load(open('preprocess.p', mode='rb'))
+    return pickle.load(open(os.path.join('data','preprocess.p'), mode='rb'))
 
 
 def create_lookup_tables(text):
@@ -67,14 +67,14 @@ def save_params(params):
     """
     Save parameters to file
     """
-    pickle.dump(params, open('params.p', 'wb'))
+    pickle.dump(params, open(os.path.join('data','params.p'), 'wb'))
 
 
 def load_params():
     """
     Load parameters from file
     """
-    return pickle.load(open('params.p', mode='rb'))
+    return pickle.load(open(os.path.join('data','params.p'), mode='rb'))
 
 
 def batch_data(source, target, batch_size):
